@@ -1,0 +1,269 @@
+<html>
+<body>
+
+<canvas id="myCanvas" width="300" height="400" style="border:1px solid #d3d3d3;" onclick = "storeGuess(event)"></canvas>
+
+</body>
+
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var grid = [[3,3,3],
+			[3,3,3],
+			[3,3,3] 
+];
+var wind= 1;
+ctx.rect(0, 0, 100, 100);
+ctx.strokeStyle = "red";
+ctx.lineWidth = "6";
+ctx.stroke();
+ctx.rect(100, 0, 100, 100);
+ctx.stroke();
+ctx.rect(200, 0, 100, 100);
+ctx.stroke();
+ctx.rect(0, 100,100, 100);
+ctx.stroke();
+ctx.rect(100, 100, 100, 100);
+ctx.stroke();
+ctx.rect(200, 100, 100, 100);
+ctx.stroke();
+ctx.rect(0, 200,100, 100);
+ctx.stroke();
+ctx.rect(100, 200, 100, 100);
+ctx.stroke();
+ctx.rect(200, 200, 100, 100);
+ctx.stroke();
+var test=0;
+function storeGuess(event) {
+    if(wind ==1){
+	var x = event.offsetX;
+    var y = event.offsetY;
+ctx.strokeStyle = "green";
+ctx.lineWidth = "4";
+if(y<100&&x<100&&grid[0][0]==3){
+if(test%2==0){
+drawX(0,0,100,100);
+drawX(100,0,0,100);
+grid[0][0] = 1;
+}
+else{
+drawO(50,50,50,0);
+grid[0][0] = 0;
+}
+test++;
+}
+else if(y<100&&x>100&&x<200&&grid[0][1]==3){
+if(test%2==0){
+drawX(100,0,200,100);
+drawX(200,0,100,100);
+grid[0][1] = 1;
+}
+else{
+drawO(150,50,50,0);
+grid[0][1] = 0;
+}
+test++;
+}
+else if(y<100&&x<300&&x>200&&grid[0][2]==3){
+if(test%2==0){
+drawX(200,0,300,100);
+drawX(300,0,200,100);
+grid[0][2] = 1;
+}
+else{
+drawO(250,50,50,0);
+grid[0][2] = 0;
+}
+test++;
+}
+else if((100<y&&y<200)&&x<100&&grid[1][0]==3){
+if(test%2==0){
+drawX(0,100,100,200);
+drawX(0,200,100,100);
+grid[1][0] = 1;
+}
+else{
+drawO(50,150,50,0);
+grid[1][0] = 0;
+}
+test++;
+}
+else if((100<y&&y<200)&&x<200&&x>100&&grid[1][1]==3){
+if(test%2==0){
+drawX(100,100,200,200);
+drawX(200,100,100,200);
+grid[1][1] = 1;
+}
+else{
+drawO(150,150,50,0);
+grid[1][1] = 0;
+}
+test++;
+}
+else if((100<y&&y<200)&&x<300&&x>200&&grid[1][2]==3){
+if(test%2==0){
+drawX(200,100,300,200);
+drawX(300,100,200,200);
+grid[1][2] = 1;
+}
+else{
+drawO(250,150,50,0);
+grid[1][2] = 0;
+}
+test++;
+}
+else if((200<y&&y<300)&&x<100&&grid[2][0]==3){
+if(test%2==0){
+drawX(0,200,100,300);
+drawX(100,200,0,300);
+grid[2][0] = 1;
+}
+else{
+drawO(50,250,50,0);
+grid[2][0] = 0;
+}
+test++;
+}
+else if((200<y&&y<300)&&x<200&&x>100&&grid[2][1]==3){
+if(test%2==0){
+drawX(100,200,200,300);
+drawX(200,200,100,300);
+grid[2][1] = 1;
+}
+else{
+drawO(150,250,50,0);
+grid[2][1] = 0;
+}
+test++;
+}
+else if((200<y&&y<300)&&x<300&&x>200&&grid[2][2]==3){
+if(test%2==0){
+drawX(200,200,300,300);
+drawX(300,200,200,300);
+grid[2][2] = 1;
+}
+else{
+drawO(250,250,50,0);
+grid[2][2] = 0;
+}
+test++;
+}
+    console.log("x coords: " + x + ", y coords: " + y+" "+test);
+	
+	 console.log(grid[0][0]);
+	 console.log(grid[1][0]);
+	 console.log(grid[2][0]);
+	 win();
+	 }
+	
+}
+function drawX(sX,sY,eX,eY){
+ctx.beginPath();
+ctx.moveTo(sX,sY);
+ctx.lineTo(eX,eY);
+ctx.stroke();
+
+
+}
+function drawO(sX,sY,eX,eY){
+ctx.beginPath();
+ctx.beginPath();
+ctx.arc(sX, sY, eX, eY, 2 * Math.PI);
+ctx.stroke();
+
+}
+function win(){
+//WIN O
+if(grid[0][0]==0&&grid[0][1]==0&&grid[0][2]==0)
+{
+alert("YOU WIN O")
+wind =0;
+}
+if(grid[1][0]==0&&grid[1][1]==0&&grid[1][2]==0)
+{
+alert("YOU WIN O")
+wind =0;
+}
+if(grid[2][0]==0&&grid[2][1]==0&&grid[2][2]==0)
+{
+alert("YOU WIN O")
+wind =0;
+}
+if(grid[0][0]==0&&grid[1][0]==0&&grid[2][0]==0)
+{
+alert("YOU WIN O")
+wind =0;
+}if(grid[0][1]==0&&grid[1][1]==0&&grid[2][1]==0)
+{
+alert("YOU WIN O")
+wind =0;
+}
+if(grid[0][2]==0&&grid[1][2]==0&&grid[2][2]==0)
+{
+alert("YOU WIN O")
+wind =0;
+}
+if(grid[0][0]==0&&grid[1][1]==0&&grid[2][2]==0)
+{
+alert("YOU WIN O")
+wind =0;
+}
+if(grid[2][0]==0&&grid[1][1]==0&&grid[0][2]==0)
+{
+alert("YOU WIN O")
+wind =0;
+}
+
+
+//WIN X
+if(grid[0][0]==1&&grid[0][1]==1&&grid[0][2]==1)
+{
+alert("YOU WIN X")
+wind =0;
+}
+if(grid[1][0]==1&&grid[1][1]==1&&grid[1][2]==1)
+{
+alert("YOU WIN X")
+wind =0;
+}
+if(grid[2][0]==1&&grid[2][1]==1&&grid[2][2]==1)
+{
+alert("YOU WIN X")
+wind =0;
+}
+if(grid[0][0]==1&&grid[1][0]==1&&grid[2][0]==1)
+{
+alert("YOU WIN X")
+wind =0;
+}if(grid[0][1]==1&&grid[1][1]==1&&grid[2][1]==1)
+{
+alert("YOU WIN X")
+wind =0;
+}
+if(grid[0][2]==1&&grid[1][2]==1&&grid[2][2]==1)
+{
+alert("YOU WIN X")
+wind =0;
+}
+if(grid[0][0]==1&&grid[1][1]==1&&grid[2][2]==1)
+{
+alert("YOU WIN X")
+wind =0;
+}
+if(grid[2][0]==1&&grid[1][1]==1&&grid[0][2]==1)
+{
+alert("YOU WIN X")
+wind =0;
+}
+if(wind==1){
+if(test ==9){
+alert ("TIE")
+wind =0;
+}
+}
+
+}
+
+</script>
+</html>

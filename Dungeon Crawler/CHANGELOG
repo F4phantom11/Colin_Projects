@@ -1,0 +1,23 @@
+April 19
+	Started on the assignment by adding do_combatR.
+	This is combat for ranged attacks.
+	Ripped the targeting system from teleporting and put it into the range.
+	Limited how far the player can hit.
+April 20
+	Had a lot of little bugs like trying to access things that were not there.
+	Kept getting random freezes can't figure out why.
+	Implemented the spell. 
+	Couldnt figure out a real nice way to do it.
+	Just went from where I was aiming and subtacted by 2.
+April 22
+	Implemeted the Dodge by checking the dodge compared to a hit roll.
+	Got defense by if the enemy attacks then if you have armor the hit is reduced by 10%.
+	Implemeted hit by needing to needing to have a higher hit than a hit roll.
+	Weight implemeted that if you have to much in equip and inventory then you can't pick 		up item.
+April 24
+	Implemented spell where it heals you.
+	Got Mana to work and have a base mana regening every turn.
+April 27
+	Added a cooldown to the spells needing ten turns after using it.
+	I forgot to put a check for when displacing enemy fails that was the freeze.	
+	
